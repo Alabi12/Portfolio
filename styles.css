@@ -112,21 +112,21 @@ button:hover > img {
   filter: saturate(100) invert(1) hue-rotate(175deg) sepia(0.5);
 }
 
-.btn-primary {
+.btn-class {
   color: #396df2;
 }
 
-.btn-contained {
+.btn-class-contained {
   background-color: #fff;
 }
 
-.btn-contained:hover {
+.btn-class-contained:hover {
   color: #fff;
   background-color: #2230d2;
   box-shadow: 0 8px 16px rgba(64, 83, 252, 0.24);
 }
 
-.btn-contained:active {
+.btn-class-contained:active {
   color: #2230d2;
   background-color: #fff;
   box-shadow: 0 8px 16px rgba(64, 83, 252, 0.24);
@@ -146,18 +146,18 @@ button:hover > img {
   color: #fff;
 }
 
-/* Shared Styles */
+/*......... Shared Styles............... */
 
-.backdrop_filter > main,
-.backdrop_filter > section,
-.backdrop_filter > #contact {
+.filter-container > main,
+.filter-container > section,
+.filter-container > #contact {
   filter: blur(5px);
 }
 
-.backdrop_filter_details > #navbar,
-.backdrop_filter_details > main,
-.backdrop_filter_details > section:nth-child(n + 2),
-.backdrop_filter_details > #contact {
+.filter-container_details > #navbar,
+.filter-container_details > main,
+.filter-container_details > section:nth-child(n + 2),
+.filter-container_details > #contact {
   filter: blur(5px);
 }
 

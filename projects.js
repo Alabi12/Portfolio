@@ -1,51 +1,56 @@
-const projectsSection = document.getElementById('portfolio');
-const docBody = document.querySelector('body');
-const popupContainer = document.querySelector('.details');
+const projectsSection = document.getElementById("portfolio");
+const docBody = document.querySelector("body");
+const popupContainer = document.querySelector(".details");
 
 const projects = [
   {
     img: {
-      src: './img/project-1-desktop.png',
-      alt: 'tonic project preview',
+      src: "./img/project-1-desktop.png",
+      alt: "tonic project preview",
     },
-    title: 'Tonic',
-    type: ['CANOPY', 'BACKEND DEV', '2015'],
-    description: 'A daily selection of privately personalized reads; no accounts or sign-ups required.',
-    technologies: ['HTML', 'CSS', 'Javascript'],
+    title: "Tonic",
+    type: ["CANOPY", "BACKEND DEV", "2015"],
+    description:
+      "A daily selection of privately personalized reads; no accounts or sign-ups required.",
+    technologies: ["HTML", "CSS", "Javascript"],
   },
   {
     img: {
-      src: './img/project-2-desktop.png',
-      alt: 'Multi-Post Stories project preview',
+      src: "./img/project-2-desktop.png",
+      alt: "Multi-Post Stories project preview",
     },
-    title: 'Multi-Post Stories',
-    type: ['FACEBOOK', 'Full Stack Dev', '2015'],
-    description: 'Experimental content creation feature that allows users to add to an existing story over the course of a day without spamming their friends.',
-    technologies: ['HTML', 'Ruby on Rails', 'CSS', 'Javascript'],
+    title: "Multi-Post Stories",
+    type: ["FACEBOOK", "Full Stack Dev", "2015"],
+    description:
+      "Experimental content creation feature that allows users to add to an existing story over the course of a day without spamming their friends.",
+    technologies: ["HTML", "Ruby on Rails", "CSS", "Javascript"],
   },
   {
     img: {
-      src: './img/project-3-desktop.png',
-      alt: 'Facebook 360 project preview',
+      src: "./img/project-3-desktop.png",
+      alt: "Facebook 360 project preview",
     },
-    title: 'Facebook 360',
-    type: ['CANOPY', 'BACKEND DEV', '2015'],
-    description: 'Exploring the future of media in Facebook\'s first Virtual Reality app; a place to discover and enjoy 360 photos and videos on Gear VR.',
-    technologies: ['HTML', 'Ruby on Rails', 'CSS', 'Javascript'],
+    title: "Facebook 360",
+    type: ["CANOPY", "BACKEND DEV", "2015"],
+    description:
+      "Exploring the future of media in Facebook's first Virtual Reality app; a place to discover and enjoy 360 photos and videos on Gear VR.",
+    technologies: ["HTML", "Ruby on Rails", "CSS", "Javascript"],
   },
   {
     img: {
-      src: './img/project-4-desktop.png',
-      alt: 'Uber Navigation project preview',
+      src: "./img/project-4-desktop.png",
+      alt: "Uber Navigation project preview",
     },
-    title: 'Uber Navigation',
-    type: ['UBER', 'Lead Developer', '2018'],
-    description: 'A smart assistant to make driving more safe, efficient, and fun by unlocking your most expensive computer: your car.',
-    technologies: ['HTML', 'Ruby on Rails', 'CSS', 'Javascript'],
+    title: "Uber Navigation",
+    type: ["UBER", "Lead Developer", "2018"],
+    description:
+      "A smart assistant to make driving more safe, efficient, and fun by unlocking your most expensive computer: your car.",
+    technologies: ["HTML", "Ruby on Rails", "CSS", "Javascript"],
   },
 ];
 
-const generateList = (arr) => arr.reduce((elements, element) => `${elements}<li>${element}</li>`, '');
+const generateList = (arr) =>
+  arr.reduce((elements, element) => `${elements}<li>${element}</li>`, "");
 
 const generatePopupSection = (project) => `
     <section class="section_detail_wrapper">
@@ -65,11 +70,11 @@ const generatePopupSection = (project) => `
               ${generateList(project.technologies)}
             </ul>
             <div class="flex gap">
-              <button class="btn-primary btn-outlined project_details_btn">
+              <button class="btn-class btn-outlined project_details_btn">
                 <span>See live</span>
                 <img src="./img/liveArrow.svg" alt="link to live demo" />
               </button>
-              <button class="btn-primary btn-outlined project_details_btn">
+              <button class="btn-class btn-outlined project_details_btn">
                 <span>See source</span>
                 <img src="./img/github.svg" alt="link to github code" />
               </button>
@@ -81,7 +86,9 @@ const generatePopupSection = (project) => `
 
 const generateCard = (project, id) => `
     <section class="card flex bg-white">
-      <img class="desktop-bg" src="${project.img.src}" alt="${project.img.alt}" />
+      <img class="desktop-bg" src="${project.img.src}" alt="${
+  project.img.alt
+}" />
       <article>
         <h3>${project.title}</h3>
         <ul class="flex project_details">
@@ -91,50 +98,50 @@ const generateCard = (project, id) => `
         <ul class="flex project_coding_langs">
           ${generateList(project.technologies)}
         </ul>
-        <button id=${id} class="project-detail btn-primary btn-outlined">See Project</button>
+        <button id=${id} class="project-detail btn-class btn-outlined">See Project</button>
       </article>
     </section>`;
 
 window.onload = () => {
   projects.forEach((project, index) => {
     const card = generateCard(project, index);
-    projectsSection.insertAdjacentHTML('beforeend', card);
+    projectsSection.insertAdjacentHTML("beforeend", card);
   });
 
-  const projectBtns = document.querySelectorAll('.project-detail');
+  const projectBtns = document.querySelectorAll(".project-detail");
 
   projectBtns.forEach((expandCardBtn) => {
-    expandCardBtn.addEventListener('click', () => {
-      popupContainer.classList.toggle('show');
-      docBody.classList.toggle('backdrop_filter_details');
-      docBody.style.overflowY = 'hidden';
+    expandCardBtn.addEventListener("click", () => {
+      popupContainer.classList.toggle("show");
+      docBody.classList.toggle("filter-container_details");
+      docBody.style.overflowY = "hidden";
 
-      popupContainer.replaceChildren('');
+      popupContainer.replaceChildren("");
 
       const popupSection = generatePopupSection(projects[expandCardBtn.id]);
-      popupContainer.insertAdjacentHTML('beforeend', popupSection);
+      popupContainer.insertAdjacentHTML("beforeend", popupSection);
 
-      const closeIcon = document.querySelector('.close-detail');
+      const closeIcon = document.querySelector(".close-detail");
 
       // below code will close Popup if user clicked outside it.
-      popupContainer.addEventListener('click', (ev) => {
+      popupContainer.addEventListener("click", (ev) => {
         if (ev.target !== popupContainer) return;
-        docBody.classList.remove('backdrop_filter_details');
-        popupContainer.classList.remove('show');
-        docBody.style.overflowY = 'scroll';
+        docBody.classList.remove("filter-container_details");
+        popupContainer.classList.remove("show");
+        docBody.style.overflowY = "scroll";
       });
 
-      closeIcon.addEventListener('click', () => {
-        docBody.classList.toggle('backdrop_filter_details');
-        popupContainer.classList.toggle('show');
-        docBody.style.overflowY = 'scroll';
+      closeIcon.addEventListener("click", () => {
+        docBody.classList.toggle("filter-container_details");
+        popupContainer.classList.toggle("show");
+        docBody.style.overflowY = "scroll";
       });
     });
   });
 
   window.onresize = () => {
-    docBody.classList.remove('backdrop_filter_details');
-    popupContainer.classList.remove('show');
-    docBody.style.overflowY = 'scroll';
+    docBody.classList.remove("filter-container_details");
+    popupContainer.classList.remove("show");
+    docBody.style.overflowY = "scroll";
   };
 };
